@@ -3,7 +3,7 @@ document.getElementById('Saludar').addEventListener('click', () => {
     const mensaje = document.getElementById('saludo');
     
     if (nombre) {
-      mensaje.textContent = `¡Hola, ${nombr}! 👋`;
+      mensaje.textContent = `¡Hola, ${nombre}! 👋`;
     } else {
       mensaje.textContent = "Por favor, mandame un mensaje.";
     }
