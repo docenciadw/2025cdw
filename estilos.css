@@ -1,0 +1,124 @@
+/* Selector universal */
+*  {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+/* selectores de etiquetas */
+html {
+    font-size: 16px;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    line-height: 1.6;
+    padding: 1rem 1rem 1rem 1rem;
+    background-color: #a2ccde;
+    color: rgb(20, 23, 23);
+}
+
+h1, h2 {
+    color: brown;
+    margin-inline-start: 1rem;
+}
+
+h2 {
+    margin-inline-start: 2rem;
+}
+
+h3 {
+    margin-block-start: 1rem;
+}
+
+section {
+    background-color: bisque;
+    padding: 1rem;
+    margin-bottom: 1rem;
+    border-radius: 8px;
+    box-shadow: 0 5px 5px grey;
+}
+
+p {
+    margin-bottom: 1rem;
+}
+
+em {
+    color: blueviolet;
+}
+
+i {
+    color: cadetblue;
+    font-style: italic;
+}
+
+small {
+    font-size: 0.8rem;
+}
+
+mark {
+    background-color: chartreuse;
+}
+
+/* Selector de clase */
+.seccionMultimedia {
+    background-color: chocolate;
+}
+
+/* Ejemplo 1 de nesting */
+.listas h3 {
+    color: fuchsia;
+}
+
+/* Ejemplo 2 de nesting */
+.listas {
+    padding-left: 1rem;
+    h3 {
+        color: cadetblue;
+    }
+    h2 {
+        color: rgb(42, 165, 46);
+    }
+}
+
+ol, ul {
+    margin-left: 1rem;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+    border-radius: 5px 5px 5px 5px;
+}
+
+th, td {
+    border: 1px solid #03161e;
+    padding-left: 1rem;
+}
+
+video {
+    width: 100%;
+}
+
+form {
+    border-radius: 5px;
+    background-color: #a2ccde;
+    padding: 0.5rem;
+    fieldset {
+        background-color: #acd1e0;
+        padding: 0.5rem;
+        color: #03161e;
+    }
+    
+}
+
+/* Selector de ID */
+#sendButton {
+    background-color: darkgoldenrod;
+    padding: 0.5rem;
+    border-radius: 5px;
+}
+
+
+

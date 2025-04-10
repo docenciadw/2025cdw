@@ -4,13 +4,19 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Etiquetas HTML</title>
+
+    <link rel="stylesheet" href="estilos.css">
 </head>
 <body>
+    <!-- Comentario antes del título -->
     <H1>Principales Etiquetas HTML</H1>
     <section>
         <h2>Parrafos</h2>
         <h3>Parrafo Normal</h3>
         <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Neque amet cum veniam sunt modi iure nihil nam repellat aperiam minima voluptas fugiat a consequatur alias, consequuntur repellendus, nesciunt iusto voluptatem!</p>
+        <p>
+            <em>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsum, nulla adipisci esse aut laborum officia? Facilis nam aliquid dolor delectus deserunt reiciendis natus minus, eligendi itaque numquam, consectetur, placeat omnis!</em>
+        </p>
         <h3>Parrafo con Emfasis</h3>
         <p>
             <em>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsum, nulla adipisci esse aut laborum officia? Facilis nam aliquid dolor delectus deserunt reiciendis natus minus, eligendi itaque numquam, consectetur, placeat omnis!</em>
@@ -120,7 +126,7 @@
             </tfoot>
         </table>
     </section>
-    <section>
+    <section class="listas">
         <h2>Listas</h2>
         <h3>Lista ordenada</h3>
         <ol type="a" start="10">
@@ -154,7 +160,7 @@
             <dd>Compacto</dd>
         </dl>
     </section>
-    <section>
+    <section class="seccionMultimedia">
         <h2>Etiquetas Iframe, audio y video</h2>
         <h3>Iframe</h3>
         <iframe src="https://www.wikipedia.org" frameborder="0"></iframe>
@@ -167,8 +173,50 @@
         <h3>Video</h3>
         <video controls>
             <source src="./cascada.mp4">
-            Tu navegador no soporta la reproducción de audio.
+            Tu navegador no soporta la reproducción de video.
         </video>
+    </section>
+    <section>
+        <h2>Formularios</h2>
+        <form action="ejemplo">
+            <fieldset>
+                <legend>Dame tus datos</legend>
+                <label for="nombre">Indica tu nombre:</label>
+                <input id="nombre" type="text">
+                <label for="email">Indica tu email</label>
+                <input type="email" name="email" id="email">
+                <label for="birthday">Indica tu fecha de nacimiento</label>
+                <input type="date" name="birthday" id="birthday">
+            </fieldset>
+            <fieldset>
+                <legend>Danos tu feedback</legend>
+                <label for="mensaje">Escribenos</label>
+                <textarea name="mensaje" id="mensaje" cols="60" rows="5"></textarea>
+            </fieldset>
+            <fieldset>
+                <legend>Otros Controles</legend>
+                <Label>Selecciona tu provincia</Label>
+                <select name="provincia" id="provincia">
+                    <option value="segovia">Segovia</option>
+                    <option value="zaragoza" selected>Zaragoza</option>
+                </select>
+                <label for="casado">Estado: </label>
+                <input type="radio" name="casado" id="casadoSi"> Si
+                <input type="radio" name="casado" id="casadoNop"> No
+            </fieldset>
+            <fieldset>
+                <legend>Condiciones de uso</legend>
+                <label for="condiciones">Acepta las condiciones</label>
+                <input type="checkbox" id="condiciones">Si
+            </fieldset>
+            <fieldset>
+                <label for="adjunto">Adjuntar fichero</label>
+                <input id="adjunto" type="file">
+                <label for="">Rango: <input type="range"></label>
+                <label>Hora: <input type="time"></label>
+            </fieldset>
+            <button id="sendButton">Enviar</button>
+        </form>
     </section>
 </body>
 </html>
