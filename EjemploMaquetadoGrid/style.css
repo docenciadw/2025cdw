@@ -1,0 +1,36 @@
+.wrapper {
+    display: grid;
+    grid-template-columns: repeat(3 1fr);
+    grid-template-areas: "header header header"
+                         "nav nav nav"
+                         "aside section section"
+                         "footer footer footer";
+}
+
+header {
+    grid-area: header;
+    background-color: brown;
+    text-align: center;
+}
+
+nav {
+    grid-area: nav;
+    background-color: burlywood;
+    text-align: right;
+}
+
+section {
+    grid-area: section;
+    background-color: antiquewhite;
+}
+
+aside {
+    grid-area: aside;
+    background-color: cadetblue;
+}
+
+footer {
+    grid-area: footer;
+    background-color: aquamarine;
+    text-align: center;
+}
