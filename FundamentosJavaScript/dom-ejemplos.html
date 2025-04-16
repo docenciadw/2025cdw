@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Manipulación del DOM</title>
+  <style>
+    body { font-family: sans-serif; padding: 20px; }
+    .resaltado { background-color: yellow; font-weight: bold; }
+    #contenedor { margin-top: 20px; padding: 10px; border: 1px solid #ccc; }
+    .item { padding: 5px; background: #eee; margin: 5px 0; }
+  </style>
+</head>
+<body>
+
+  <h1 id="titulo">Manipulación del DOM</h1>
+  <button onclick="cambiarTexto()">1. Cambiar texto</button>
+  <button onclick="cambiarEstilo()">2. Cambiar estilo</button>
+  <button onclick="agregarElemento()">3. Agregar elemento</button>
+  <button onclick="eliminarElemento()">4. Eliminar elemento</button>
+  <button onclick="alternarClase()">5. Alternar clase</button>
+  <button onclick="leerValores()">6. Leer valores</button>
+
+  <div id="contenedor">
+    <p class="item">Elemento 1</p>
+    <p class="item">Elemento 2</p>
+    <p class="item">Elemento 3</p>
+  </div>
+
+  <input type="text" id="entrada" placeholder="Escribe algo..." />
+  <p id="resultado"></p>
+
+  <script>
+    // 1. Cambiar texto del título
+    function cambiarTexto() {
+      const titulo = document.getElementById("titulo");
+      titulo.textContent = "Texto modificado con JavaScript";
+    }
+
+    // 2. Cambiar estilo de un elemento
+    function cambiarEstilo() {
+      const contenedor = document.getElementById("contenedor");
+      contenedor.style.backgroundColor = "#d1e7dd";
+      contenedor.style.border = "2px solid green";
+    }
+
+    // 3. Crear y agregar un nuevo elemento al DOM
+    function agregarElemento() {
+      const nuevo = document.createElement("p");
+      nuevo.classList.add("item");
+      nuevo.textContent = "Nuevo elemento";
+      document.getElementById("contenedor").appendChild(nuevo);
+    }
+
+    // 4. Eliminar el último elemento del contenedor
+    function eliminarElemento() {
+      const contenedor = document.getElementById("contenedor");
+      const ultimo = contenedor.lastElementChild;
+      if (ultimo) {
+        contenedor.removeChild(ultimo);
+      }
+    }
+
+    // 5. Alternar una clase en un elemento
+    function alternarClase() {
+      const titulo = document.getElementById("titulo");
+      titulo.classList.toggle("resaltado");
+    }
+
+    // 6. Leer valores de un input
+    function leerValores() {
+      const input = document.getElementById("entrada");
+      const salida = document.getElementById("resultado");
+      salida.textContent = "Has escrito: " + input.value;
+    }
+  </script>
+
+</body>
+</html>

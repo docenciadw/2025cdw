@@ -9,6 +9,11 @@ h1 {
     margin-top: 40px;
 }
 
+article {
+    padding: 10px;
+    background-color: azure;
+}
+
 section {
     margin-top: 60px;
 }
@@ -34,7 +39,6 @@ h2 {
 .contenedor-flex {
     display: flex;
     flex-direction: row;
-    height: 600px;
     flex-wrap: wrap;
     gap: 10px;
     justify-content: space-around;
@@ -42,6 +46,53 @@ h2 {
     background-color: #e0e7ff;
     padding: 20px;
     border-radius: 10px;
+}
+
+.flexbox-ejemplo1 .contenedor-flex {
+    flex-direction: column;
+}
+
+.flexbox-ejemplo2 .contenedor-flex {
+    flex-direction: column-reverse;
+}
+
+.flexbox-ejemplo3 .contenedor-flex {
+    flex-direction: row;
+}
+
+.flexbox-ejemplo4 .contenedor-flex {
+    flex-direction: row-reverse;
+}
+
+.flexbox-ejemplo5 .contenedor-flex {
+    justify-content: space-between;
+}
+
+.flexbox-ejemplo6 .contenedor-flex {
+    justify-content: space-around;
+}
+
+.flexbox-ejemplo7 .contenedor-flex {
+    justify-content: flex-start;
+}
+
+.flexbox-ejemplo8 .contenedor-flex {
+    justify-content: flex-end;
+}
+
+.flexbox-ejemplo9 .contenedor-flex {
+    justify-content: center;
+}
+
+.flexbox-ejemplo10 {
+    .contenedor-flex {
+        height: 600px;
+    }
+}
+
+.flexbox-ejemplo10 .contenedor-flex {
+    flex-direction: column;
+    justify-content: flex-end;
 }
 
 img {
