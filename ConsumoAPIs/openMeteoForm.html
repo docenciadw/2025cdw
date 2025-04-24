@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Clima Actual</title>
+</head>
+<body>
+  <h1>Clima Actual en ¿?</h1>
+  <input type="number" name="latitud" id="latitud">
+  <input type="number" name="longitud" id="longitud">
+  <button onclick="obtenerClima()">Obtener Temperatura</button>
+
+  <div id="resultado" style="margin-top: 20px;"></div>
+
+  <script>
+    async function obtenerClima() {
+      const latitud = document.getElementById("latitud").value;
+      const longitud = document.getElementById("longitud").value;
+      const url = `https://api.open-meteo.com/v1/forecast?latitude=${latitud}&longitude=${longitud}&current_weather=true`;
+
+      try {
+        const respuesta = await fetch(url);
+        const datos = await respuesta.json();
+
+        const temperatura = datos.current_weather.temperature;
+        const viento = datos.current_weather.windspeed;
+
+        document.getElementById('resultado').innerHTML = `
+          <p><strong>Temperatura:</strong> ${temperatura}°C</p>
+          <p><strong>Velocidad del viento:</strong> ${viento} km/h</p>
+        `;
+      } catch (error) {
+        document.getElementById('resultado').textContent = 'Error al obtener los datos del clima.';
+        console.error(error);
+      }
+    }
+  </script>
+</body>
+</html>

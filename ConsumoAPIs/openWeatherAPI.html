@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OpenWeather API</title>
+</head>
+<body>
+    <input type="text" id="ciudad" placeholder="Introduce una ciudad">
+<button onclick="buscarClima()">Buscar clima</button>
+<p id="resultado"></p>
+
+</body>
+<script>
+    async function buscarClima() {
+       const ciudad = document.getElementById("ciudad").value;
+       const apiKey = "706e7a5374b5cbadf4ef88993afc838a";
+       const url = `https://api.openweathermap.org/data/2.5/weather?q=${ciudad}&units=metric&appid=${apiKey}`;
+ 
+       try {
+          const respuesta = await fetch(url);
+          const datos = await respuesta.json();
+ 
+          const temperatura = datos.main.temp;
+          document.getElementById("resultado").textContent =
+             `Temperatura en ${ciudad}: ${temperatura}°C`;
+       } catch (error) {
+         console.error(error);
+      }
+    }
+ </script>
+</html>

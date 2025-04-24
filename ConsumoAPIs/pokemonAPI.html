@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Consulta de Pokémon</title>
+</head>
+<body>
+  <h1>Consulta de Pokémon</h1>
+  
+  <input type="text" id="pokemonName" placeholder="Escribe el nombre de un Pokémon">
+  <button onclick="buscarPokemon()">Buscar</button>
+
+  <div id="resultado"></div>
+
+  <script>
+    async function buscarPokemon() {
+      const nombre = document.getElementById('pokemonName').value.toLowerCase();
+      const url = `https://pokeapi.co/api/v2/pokemon/${nombre}`;
+
+      try {
+        const respuesta = await fetch(url);
+        if (!respuesta.ok) {
+          throw new Error('Pokémon no encontrado');
+        }
+
+        const datos = await respuesta.json();
+
+        document.getElementById('resultado').innerHTML = `
+          <h2>${datos.name.toUpperCase()}</h2>
+          <img src="${datos.sprites.front_default}" alt="${datos.name}">
+          <p><strong>Altura:</strong> ${datos.height}</p>
+          <p><strong>Peso:</strong> ${datos.weight}</p>
+          <p><strong>Tipo:</strong> ${datos.types.map(t => t.type.name).join(', ')}</p>
+        `;
+      } catch (error) {
+        document.getElementById('resultado').innerHTML = `<p style="color:red;">${error.message}</p>`;
+      }
+    }
+  </script>
+</body>
+</html>

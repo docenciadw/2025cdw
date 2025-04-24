@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Consejo Aleatorio Traducido</title>
+</head>
+<body>
+  <h1>Consejo del día</h1>
+  <button onclick="obtenerYTraducirConsejo()">Dame un consejo</button>
+
+  <div id="resultado" style="margin-top: 20px;">
+    <p><strong>En inglés:</strong> <span id="consejoEn"></span></p>
+    <p><strong>Traducido al español:</strong> <span id="consejoEs"></span></p>
+  </div>
+
+  <script>
+    async function obtenerYTraducirConsejo() {
+      const consejoEn = document.getElementById('consejoEn');
+      const consejoEs = document.getElementById('consejoEs');
+      consejoEn.textContent = 'Cargando...';
+      consejoEs.textContent = '';
+
+      try {
+        // Paso 1: Obtener consejo en inglés
+        const respuesta = await fetch('https://api.adviceslip.com/advice', { cache: "no-cache" });
+        const datos = await respuesta.json();
+        const textoOriginal = datos.slip.advice;
+
+        consejoEn.textContent = `"${textoOriginal}"`;
+
+        // Paso 2: Traducir al español usando la API gratuita de Google Translate
+        const url = `https://translate.googleapis.com/translate_a/single?client=gtx&sl=auto&tl=es&dt=t&q=${encodeURIComponent(textoOriginal)}`;
+        const traduccionResp = await fetch(url);
+        const traduccionDatos = await traduccionResp.json();
+        const textoTraducido = traduccionDatos[0][0][0];
+
+        consejoEs.textContent = `"${textoTraducido}"`;
+
+      } catch (error) {
+        consejoEn.textContent = 'Error al obtener el consejo.';
+        consejoEs.textContent = 'No se pudo traducir.';
+        console.error(error);
+      }
+    }
+  </script>
+</body>
+</html>

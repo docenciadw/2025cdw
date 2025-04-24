@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Consejo Aleatorio</title>
+</head>
+<body>
+  <h1>¿Necesitas un consejo?</h1>
+  <button onclick="obtenerConsejo()">Dame un consejo</button>
+
+  <div id="consejo" style="margin-top: 20px; font-style: italic;"></div>
+
+  <script>
+    async function obtenerConsejo() {
+      const url = 'https://api.adviceslip.com/advice';
+
+      try {
+        const respuesta = await fetch(url, { cache: "no-cache" }); // Evita consejos cacheados
+        const datos = await respuesta.json();
+
+        document.getElementById('consejo').textContent = `"${datos.slip.advice}"`;
+      } catch (error) {
+        document.getElementById('consejo').textContent = 'Hubo un problema al obtener el consejo.';
+        console.error(error);
+      }
+    }
+  </script>
+</body>
+</html>
