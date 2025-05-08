@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestión de Usuarios</title>
+</head>
+<body>
+    <h1>Usuarios</h1>
+    <ul id="listaUsuarios"></ul>
+
+    <h2>Agregar Usuarios</h2>
+    <input type="text" name="nombre" id="nombre" placeholder="Nombre">
+    <input type="email" name="email" id="email" placeholder="Email">
+    <button onclick="agregarUsuario()">Agregar</button>
+
+    <h2>Actualizar Usuario</h2>
+    <input id="idActualizar" placeholder="ID del usuario" />
+    <input id="nuevoNombre" placeholder="Nuevo nombre" />
+    <input id="nuevoEmail" placeholder="Nuevo email" />
+    <button onclick="actualizarUsuario()">Actualizar (PUT)</button>
+    <button onclick="patchUsuario()">Actualizar Nombre (PATCH)</button>
+
+    <h2>Eliminar Usuario</h2>
+    <input id="idEliminar" placeholder="ID del usuario" />
+    <button onclick="eliminarUsuario()">Eliminar</button>
+
+    <script>
+        const API_URL = 'http://localhost:3000/usuarios';
+
+        async function agregarUsuario() {
+            const nombre = document.getElementById('nombre').value;
+            const email = document.getElementById('email').value;
+
+            await fetch('http://localhost:3000/usuarios', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({nombre, email})
+            });
+
+            obtenerUsuarios();
+        }
+
+        async function actualizarUsuario() {
+            const id = document.getElementById('idActualizar').value;
+            const nombre = document.getElementById('nuevoNombre').value;
+            const email = document.getElementById('nuevoEmail').value;
+            await fetch(`${API_URL}/${id}`, {
+                method: 'PUT',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ nombre, email })
+            });
+            obtenerUsuarios();
+        }
+
+        async function patchUsuario() {
+            const id = document.getElementById('idActualizar').value;
+            const nombre = document.getElementById('nuevoNombre').value;
+            await fetch(`${API_URL}/${id}`, {
+                method: 'PATCH',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ nombre })
+            });
+            obtenerUsuarios();
+        }
+
+        async function eliminarUsuario() {
+            const id = document.getElementById('idEliminar').value;
+            await fetch(`${API_URL}/${id}`, {
+                method: 'DELETE'
+            });
+            obtenerUsuarios();
+        }
+
+        async function obtenerUsuarios() {
+            const respuesta = await fetch('http://localhost:3000/usuarios');
+            const usuarios = await respuesta.json();
+
+            const lista = document.getElementById('listaUsuarios');
+            lista.innerHTML = "";
+
+            usuarios.forEach(usuario => {
+                const li = document.createElement('li');
+                li.textContent = `${usuario.nombre} - ${usuario.email}`;
+                lista.appendChild(li);
+            });
+        }
+
+        obtenerUsuarios();
+    </script>
+</body>
+</html>
